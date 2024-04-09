@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int timeRequiredToBuy(std::vector<int>& tickets, int k) {
+        int ticketToBuy = tickets[k];
+        int time = 0;
+
+        for (int i = 0; i < tickets.size(); i++) {
+            if (i <= k)
+                time += std::min(ticketToBuy, tickets[i]);
+            else
+                time += std::min(ticketToBuy - 1, tickets[i]);
+        }
+
+        return time;
+    }
+};
